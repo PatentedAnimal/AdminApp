@@ -1,6 +1,4 @@
-// 09_01_led_control_server.js
-
-console.log('TRIO 2000, baby!')
+console.log("let's read the temperature of the CPU!")
 
 var app = require('http').createServer(handler);
 var io = require('socket.io').listen(app);// we'll listen on the app's port
@@ -8,9 +6,8 @@ var fs = require('fs');
 var bb = require('bonescript');
 
 app.listen(8888);
-io.sockets.on('connection', onConnect);
 
-var htmlPage = 'trio2000/client.html'; // use this for Angstrom
+var htmlPage = 'client.html';
 function handler (req, res) {
   fs.readFile(htmlPage,
     function (err, data) {
@@ -22,18 +19,6 @@ function handler (req, res) {
       res.end(data);
     });
 } 
-
-function onConnect(socket) {
-    socket.on('digitalWrite', handleDigitalWrite);
-}
-
-function handleDigitalWrite(message) {
-    console.log('Msg='+message)
-    var data = JSON.parse(message);
-    console.log("write pin:" + data.pin + " value:" + data.value);
-    bb.pinMode(data.pin, bb.OUTPUT);
-    bb.digitalWrite(data.pin, data.value);
-}
 
 setInterval(readTemperature,2500)   
 

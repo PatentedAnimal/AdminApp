@@ -12,22 +12,11 @@
         var tempF = (tempC * 9/5) + 32;
         $("#temp").html(" " + tempC + "&deg; C<br> " + tempF + "&deg; F");
     }
-
-    function ledOn(){
-        socket.emit('digitalWrite', '{"pin":"USR3", "value":1}');
-    }
-
-    function ledOff(){
-        socket.emit('digitalWrite', '{"pin":"USR3", "value":0}');
-    }
     </script>
 </head> 
  
 <body>
-    <h1 style="font-size:60pt;">TRIO 2000, baby!</h1>
-    <a href="" onClick="ledOn();" style="font-size:32pt;">ON</a>
-    &nbsp;&nbsp;&nbsp;
-    <a href="" onClick="ledOff();" style="font-size:32pt;">OFF</a>
+    <h1 style="font-size:60pt;">BeagleBone Black - Temperature Display!</h1>
     <br><br>
     <h1 style="font-size:60pt;">Temperature</h1>
     <h2 style="font-size:40pt;"id="temp">-</h2>
