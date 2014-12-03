@@ -3,7 +3,6 @@ console.log("let's read the temperature of the CPU!")
 var app = require('http').createServer(handler);
 var io = require('socket.io').listen(app);// we'll listen on the app's port
 var fs = require('fs');
-var bb = require('bonescript');
 
 app.listen(8888);
 
@@ -28,12 +27,16 @@ var temperatureLocation = '/sys/devices/ocp.3/44e10448.bandgap/temp1_input';
 // Reads temperature
 function readTemperature(){
     //console.log("Reading temperature")
-    bb.readTextFile(temperatureLocation, sendTemperature); 
+    fs.readFile(temperatureLocation, function read(err, data) {
+        if (err) {
+            throw err;
+        }
+        sendTemperature(parseInt(data)/1000);
+    });
 }
 
 // Prints Temperature
 function sendTemperature(x) {
-    x.data /= 1000;
-    console.log("Sending temperature: "+x.data)
-    io.sockets.emit('temperature', '{"temperature":"'+x.data+'"}');
+    console.log("Sending temperature: "+x)
+    io.sockets.emit('temperature', '{"temperature":"'+x+'"}');
 }

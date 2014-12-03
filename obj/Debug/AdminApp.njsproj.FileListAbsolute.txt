@@ -1,0 +1,4 @@
+C:\Users\Ted\SkyDrive\Documents\Ted S. Singh\Professional\Development\BitsToBrowser\BeagleBone Black\socketTemp\obj\Debug\AdminApp.njsprojResolveAssemblyReference.cache
+C:\Users\Ted\SkyDrive\Documents\Ted S. Singh\Professional\Development\BitsToBrowser\BeagleBone Black\socketTemp\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\Ted\SkyDrive\AdminApp\obj\Debug\AdminApp.njsprojResolveAssemblyReference.cache
+C:\Users\Ted\SkyDrive\AdminApp\bin\Microsoft.NodejsTools.WebRole.dll
